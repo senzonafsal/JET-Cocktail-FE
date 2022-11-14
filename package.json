@@ -1,0 +1,12 @@
+{
+  "name": "justeattakeaway-cocktail",
+  "version": "1.0.0",
+  "description": "JustEatTakeaway.com Cocktail Application",
+  "private": true,
+  "workspaces": [
+    "modules/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
