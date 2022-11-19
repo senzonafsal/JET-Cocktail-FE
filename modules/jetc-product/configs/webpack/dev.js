@@ -12,14 +12,14 @@ module.exports = merge(commonConfig, {
     mode: "development",
     context: resolve(__dirname, "../../src"),
     devServer: {
-        port: moduleRegistry.container.port
+        port: moduleRegistry.product.port
     },
     plugins: [new ModuleFederationPlugin({
-        name: "home",
+        name: "product",
         filename: "remoteEntry.js",
-        remotes: {
-            "jetc-search": `search@http://localhost:${moduleRegistry.search.port}/remoteEntry.js`,
-            "jetc-product": `product@http://localhost:${moduleRegistry.product.port}/remoteEntry.js`,
+        exposes: {
+            "./ProductCard": "./components/ProductCard",
+            "./ProductListing": "./components/ProductListing"
         },
         shared: {
             ...deps,

@@ -5,11 +5,7 @@ import {
     Box,
     Container,
     Typography,
-    FormControl,
-    InputBase,
-    SvgIcon,
     Button,
-    styled,
     Paper,
     Card,
     CardMedia,
@@ -17,18 +13,22 @@ import {
     CardActions,
     CardHeader,
     CardActionArea,
-    Badge,
     Chip,
     Stack
 } from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {appTheme} from "../assets/themes/theme";
 
 const reactLogo = require("../assets/img/jet_logo.png");
 const headerBg1 = require("../assets/img/Header_BG1.png");
 const headerBg2 = require("../assets/img/Header_BG2.png");
-const cocktailImage = require("../assets/img/cocktail_sample.jpg");
+
+// @ts-ignore
+const SearchField = React.lazy(() => import("jetc-search/SearchField"));
+// @ts-ignore
+const Filter = React.lazy(() => import("jetc-search/Filter"));
+// @ts-ignore
+const ProductListing = React.lazy(() => import("jetc-product/ProductListing"));
 
 const App = () => (
         <ThemeProvider theme={appTheme}>
@@ -41,7 +41,7 @@ const App = () => (
                     >
                         <Container maxWidth="xl">
                             <Box>
-                                <a href="/"><img src={reactLogo.default} className="logo" width="300"/></a>
+                                <a href="/"><img src={reactLogo.default} className="logo" width="300" alt="logo"/></a>
                             </Box>
                         </Container>
                     </Box>
@@ -74,30 +74,7 @@ const App = () => (
                                     lineHeight: 1.3,
                                     fontWeight: 600
                                 }}>Your favourite cocktails from all over the world.</Typography>
-                                <FormControl fullWidth={true} sx={{
-                                    margin: "40px auto 20px auto",
-                                    maxWidth: 600,
-                                    borderRadius: "8px",
-                                    overflow: "hidden",
-                                    boxShadow: "0px 4px 16px rgb(43 52 69 / 10%)"
-                                }}>
-                                    <InputBase fullWidth={true} placeholder="Search your cocktail here.." size="small"
-                                               startAdornment={(
-                                                   <SvgIcon fontSize="small" component={SearchOutlinedIcon}></SvgIcon>
-                                               )} endAdornment={(
-                                        <Button variant="contained" size="large" sx={{
-                                            color: "#fff",
-                                            textTransform: "none",
-                                            height: "50px"
-                                        }}>Search</Button>
-                                    )} sx={{
-                                        background: "#fff",
-                                        color: "#4B566B",
-                                        paddingLeft: "14px",
-                                        height: "50px"
-                                    }}>
-                                    </InputBase>
-                                </FormControl>
+                                <SearchField style="margin: 40px auto 20px auto;"/>
                             </Box>
                         </Container>
                     </Box>
@@ -108,27 +85,7 @@ const App = () => (
                         display: "flex",
                         flexWrap: "wrap"
                     }}>
-                        <Box
-                            sx={{
-                                width: "280px",
-                                minWidth: "280px",
-                                height: "calc(100vh - 80px)",
-                            }}
-                        >
-                            <Paper elevation={0} sx={{
-                                borderRadius: "8px",
-                                padding: "20px",
-                                height: "calc(100% - 40px)"
-                            }}>
-                                <Box>
-                                    <Typography variant="h3" sx={{
-                                        fontSize: "16px",
-                                        fontWeight: 600,
-                                        borderBottom: "2px solid #F8C7CF"
-                                    }}>Cocktail Type</Typography>
-                                </Box>
-                            </Paper>
-                        </Box>
+                        <Filter/>
                         <Box
                             sx={{
                                 minHeight: "calc(100vh - 80px)",
@@ -142,49 +99,13 @@ const App = () => (
                                     fontSize: "25px",
                                     fontWeight: 600,
                                 }}>Cocktails</Typography>
-                                <Typography variant="p" sx={{
+                                <Typography sx={{
                                     fontSize: "13px",
                                     color: "#999"
                                 }}>your all-time favourites are here!!</Typography>
                             </Box>
                             <Box sx={{marginTop: "20px"}}>
-                                <Masonry columns={4} spacing={2}>
-                                    <Card sx={{minWidth: "274px"}}>
-                                        <CardActionArea>
-                                            <Chip sx={{
-                                                position: "absolute",
-                                                top: "12px",
-                                                left: "12px",
-                                                zIndex: "999",
-                                                background: "rgb(241,134,46)",
-                                                color: "white",
-                                                fontSize: "13px"
-                                            }} label={"Alcoholic"}></Chip>
-                                            <CardMedia
-                                                component="img"
-                                                width="194"
-                                                image={cocktailImage.default}
-                                                alt="Cocktail Sample"
-                                            />
-                                            <CardHeader title="Cocktail Sample" sx={{
-                                                padding: "12px 16px 16px 16px"
-                                            }}/>
-                                            <CardContent sx={{padding: "0 16px"}}>
-                                                <Stack direction="row" spacing={1} sx={{flexWrap: "wrap"}}>
-                                                    <Chip label="Gin" sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
-                                                    <Chip label="Grand Marnier"  sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
-                                                    <Chip label="Lemon Juice"  sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
-                                                    <Chip label="Grenadine"  sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
-                                                </Stack>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <CardActions>
-                                            <Button size="small" color="primary">
-                                                Add to Favourites
-                                            </Button>
-                                        </CardActions>
-                                    </Card>
-                                </Masonry>
+                                <ProductListing/>
                             </Box>
                         </Box>
                     </Container>

@@ -1,5 +1,5 @@
 {
-  "name": "jetc-home",
+  "name": "jetc-product",
   "version": "1.0.0",
   "private": true,
   "description": "Home Container",
@@ -23,7 +23,6 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/lab": "^5.0.0-alpha.108",
     "@mui/material": "^5.10.13",
-    "@types/react-dom": "^18.0.9",
     "babel-loader": "^9.1.0",
     "css-loader": "^6.7.2",
     "eslint": "^8.26.0",
