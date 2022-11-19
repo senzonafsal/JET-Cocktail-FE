@@ -1,12 +1,13 @@
 {
-  "name": "justeattakeaway-cocktail",
+  "name": "jet-cocktail-fe",
   "version": "1.0.0",
-  "description": "JustEatTakeaway.com Cocktail Application",
+  "description": "JustEatTakeaway.com Cocktail Front-End Application",
   "private": true,
   "workspaces": [
     "modules/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "author": "Afsal K H"
 }
