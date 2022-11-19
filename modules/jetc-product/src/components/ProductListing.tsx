@@ -3,12 +3,12 @@ import "./../assets/scss/App.scss";
 import {
     ThemeProvider,
 } from '@mui/material';
-import {appTheme} from "jetc-home/src/assets/themes/theme";
+import {appTheme} from "../../../../shared/assets/themes/theme";
 import Masonry from "@mui/lab/Masonry";
 import ProductCard from "./ProductCard";
 
 const ProductListing = () => (
-    <div className="jetc-search">
+    <div className="jetc-product-product-listing">
         <ThemeProvider theme={appTheme}>
             <Masonry columns={4} spacing={2}>
                 <ProductCard/>

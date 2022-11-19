@@ -5,19 +5,8 @@ import {
     Box,
     Container,
     Typography,
-    Button,
-    Paper,
-    Card,
-    CardMedia,
-    CardContent,
-    CardActions,
-    CardHeader,
-    CardActionArea,
-    Chip,
-    Stack
 } from '@mui/material';
-import Masonry from '@mui/lab/Masonry';
-import {appTheme} from "../assets/themes/theme";
+import {appTheme} from "../../../../shared/assets/themes/theme";
 
 const reactLogo = require("../assets/img/jet_logo.png");
 const headerBg1 = require("../assets/img/Header_BG1.png");

@@ -11,12 +11,12 @@ import {
     CardActions,
     Button, Card,
 } from '@mui/material';
-import {appTheme} from "jetc-home/src/assets/themes/theme";
+import {appTheme} from "../../../../shared/assets/themes/theme";
 
 const cocktailImage = require("../assets/img/cocktail_sample.jpg");
 
 const ProductCard = () => (
-    <div className="jetc-search">
+    <div className="jetc-product-product-card">
         <ThemeProvider theme={appTheme}>
             <Card sx={{minWidth: "274px"}}>
                 <CardActionArea>

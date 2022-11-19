@@ -1,4 +1,7 @@
 module.exports = {
+    backend: {
+        port: 3000
+    },
     container: {
         port: 3001
     },

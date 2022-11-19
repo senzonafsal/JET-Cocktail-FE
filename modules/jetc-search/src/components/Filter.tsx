@@ -3,10 +3,10 @@ import "./../assets/scss/App.scss";
 import {
     ThemeProvider, Paper, Box, Typography,
 } from '@mui/material';
-import {appTheme} from "jetc-home/src/assets/themes/theme";
+import {appTheme} from "../../../../shared/assets/themes/theme";
 
 const Filter = () => (
-    <div className="jetc-search">
+    <div className="jetc-search-filter">
         <ThemeProvider theme={appTheme}>
             <Box
                 sx={{

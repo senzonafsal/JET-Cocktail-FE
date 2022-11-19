@@ -8,10 +8,10 @@ import {
     Button,
 } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import {appTheme} from "jetc-home/src/assets/themes/theme";
+import {appTheme} from "../../../../shared/assets/themes/theme";
 
 const SearchField = () => (
-    <div className="jetc-search">
+    <div className="jetc-search-search-field">
         <ThemeProvider theme={appTheme}>
             <FormControl fullWidth={true} sx={{
                 margin: "40px auto 20px auto",
