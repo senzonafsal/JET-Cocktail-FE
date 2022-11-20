@@ -31,7 +31,7 @@ const SearchProvider = ({children}) => {
                         strGlass,
                         strCategory
                     } = item;
-                    const ingredientMeasurements = Object.keys(item).filter(key => key.indexOf("strIngredient") != -1).reduce((obj, key) => {
+                    const ingredientWithMeasurements = Object.keys(item).filter(key => key.indexOf("strIngredient") != -1).reduce((obj, key) => {
                         if (item[key]) {
                             const measurement = (item[`strMeasure${key.match(/\d/g)}`]);
                             obj[item[key]] = measurement ? measurement.trim() : measurement;
@@ -47,7 +47,8 @@ const SearchProvider = ({children}) => {
                         glass: strGlass,
                         tags,
                         category: strCategory,
-                        measurements: ingredientMeasurements,
+                        ingredientWithMeasurements,
+                        ingredients: Object.keys(ingredientWithMeasurements)
                     };
                 });
                 setCocktails(newCocktails);
