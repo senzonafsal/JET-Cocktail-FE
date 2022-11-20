@@ -6,42 +6,45 @@ import {
     ThemeProvider,
     Box
 } from '@mui/material';
-import { appTheme } from 'jet-cocktail-shared';
+import {appTheme} from 'jet-cocktail-shared';
+import {SearchProvider} from 'jet-cocktail-search/src/searchcontext';
 
 const App = () => (
     <div className="jetc-product">
-        <ThemeProvider theme={appTheme}>
-            <Box
-                sx={{
-                    width: "80%",
-                    padding: "20px 0",
-                    margin: "0 auto"
-                }}
-            >
+        <SearchProvider>
+            <ThemeProvider theme={appTheme}>
                 <Box
                     sx={{
-                        padding: "20px 0"
+                        width: "80%",
+                        padding: "20px 0",
+                        margin: "0 auto"
                     }}
                 >
                     <Box
                         sx={{
-                            width: "250px"
+                            padding: "20px 0"
                         }}
                     >
-                        <div>Name: ProductCard</div>
-                        <ProductCard/>
+                        <Box
+                            sx={{
+                                width: "250px"
+                            }}
+                        >
+                            <div>Name: ProductCard</div>
+                            <ProductCard/>
+                        </Box>
+                    </Box>
+                    <Box
+                        sx={{
+                            padding: "20px 0"
+                        }}
+                    >
+                        <div>Name: ProductListing</div>
+                        <ProductListing/>
                     </Box>
                 </Box>
-                <Box
-                    sx={{
-                        padding: "20px 0"
-                    }}
-                >
-                    <div>Name: ProductListing</div>
-                    <ProductListing/>
-                </Box>
-            </Box>
-        </ThemeProvider>
+            </ThemeProvider>
+        </SearchProvider>
     </div>
 );
 export default App;
