@@ -2,17 +2,25 @@ import * as React from "react";
 import "./../assets/scss/App.scss";
 import {Button, FormControl, InputBase, SvgIcon, ThemeProvider,} from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { appTheme } from 'jet-cocktail-shared';
+import {appTheme} from 'jet-cocktail-shared';
 
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
 
 const SearchField = () => {
-    const { setSearchTerm } = useSearchContext("vodka");
+    const {setSearchTerm} = useSearchContext("vodka");
     const searchValue = React.useRef("");
+
     function searchCocktail() {
         const inputValue = searchValue.current;
         setSearchTerm(inputValue.value);
     }
+
+    function keyDownHandler(e) {
+        if (e.key === 'Enter') {
+            searchCocktail();
+        }
+    }
+
     React.useEffect(() => {
         searchValue.current.focus();
     }, []);
@@ -40,7 +48,7 @@ const SearchField = () => {
                         color: "#4B566B",
                         paddingLeft: "14px",
                         height: "50px"
-                    }} inputRef={searchValue}/>
+                    }} inputRef={searchValue} onKeyDown={keyDownHandler}/>
                 </FormControl>
             </ThemeProvider>
         </div>
