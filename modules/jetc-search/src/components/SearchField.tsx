@@ -7,7 +7,7 @@ import {appTheme} from 'jet-cocktail-shared';
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
 
 const SearchField = () => {
-    const {setSearchTerm} = useSearchContext("vodka");
+    const {setSearchTerm} = useSearchContext();
     const searchValue = React.useRef("");
 
     function searchCocktail() {

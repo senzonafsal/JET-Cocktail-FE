@@ -1,32 +1,62 @@
 import * as React from "react";
 import "./../assets/scss/App.scss";
-import {
-    ThemeProvider, Paper, Box, Typography, FormGroup, FormControlLabel, Checkbox
-} from '@mui/material';
+import {Box, Checkbox, FormControlLabel, FormGroup, Paper, ThemeProvider, Typography} from '@mui/material';
 import {appTheme} from 'jet-cocktail-shared';
 
 // @ts-ignore
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
 
 const Filter = () => {
-    const {cocktails, loading} = useSearchContext();
+    enum FilterTypes {
+        "Category",
+        'Glass',
+        'Ingredients'
+    }
+
+    const {
+        loading,
+        filterTerm,
+        setFilterTerm,
+        ingredientsFilter,
+        categoryFilter,
+        glassFilter
+    } = useSearchContext();
+    let newFilter = {...filterTerm};
     if (loading) {
         return "Loading";
     }
-    if (!cocktails || (cocktails && cocktails.length == 0)) {
-        return (
-            <h2 className="section-title">no cocktails found to filter</h2>
-        );
+
+    function filterHandler(value: string, isChecked: boolean, type: FilterTypes) {
+        if (newFilter[FilterTypes[type]]) {
+            if (isChecked) {
+                newFilter[FilterTypes[type]].push(value)
+            } else {
+                newFilter[FilterTypes[type]] = newFilter[FilterTypes[type]].filter((val: string) => (val !== value));
+                if (newFilter[FilterTypes[type]].length === 0) {
+                    delete newFilter[FilterTypes[type]];
+                }
+            }
+        } else {
+            newFilter[FilterTypes[type]] = [value]
+        }
+        setFilterTerm(newFilter);
     }
-    const categories = [...new Set(cocktails.map(item => item.category.replace(/\w\S*/g, ((txt) => {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    }))))];
-    const ingredients = [...new Set(cocktails.flatMap(item => item.ingredients).map((text) => (text).replace(/\w\S*/g, ((txt) => {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    }))))];
-    const glasses = [...new Set(cocktails.map(item => item.glass.replace(/\w\S*/g, ((txt) => {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    }))))];
+
+    function categoryFilterHandler(e: any) {
+        const {checked, value} = e.target;
+        filterHandler(value, checked, FilterTypes.Category);
+    }
+
+    function glassFilterHandler(e: any) {
+        const {checked, value} = e.target;
+        filterHandler(value, checked, FilterTypes.Glass);
+    }
+
+    function ingredientsFilterHandler(e: any) {
+        const {checked, value} = e.target;
+        filterHandler(value, checked, FilterTypes.Ingredients);
+    }
+
     return (
         <div className="jetc-search-filter">
             <ThemeProvider theme={appTheme}>
@@ -54,10 +84,11 @@ const Filter = () => {
                                 margin: "20px 0 10px 0"
                             }}>Category</Typography>
                             <FormGroup>
-                                {categories.map((item: any, index: number) => {
+                                {categoryFilter.map((item: any, index: number) => {
                                     return <FormControlLabel key={index} sx={{'& .MuiTypography-root': {fontSize: 14}}}
-                                                             control={<Checkbox
-                                                                 sx={{'& .MuiSvgIcon-root': {fontSize: 16}}}/>}
+                                                             control={<Checkbox value={item} key={item}
+                                                                                sx={{'& .MuiSvgIcon-root': {fontSize: 16}}}
+                                                                                onChange={categoryFilterHandler}/>}
                                                              label={item}/>
                                 })}
                             </FormGroup>
@@ -67,10 +98,11 @@ const Filter = () => {
                                 margin: "20px 0 10px 0"
                             }}>Glass</Typography>
                             <FormGroup>
-                                {glasses.map((item: any, index: number) => {
+                                {glassFilter.map((item: any, index: number) => {
                                     return <FormControlLabel key={index} sx={{'& .MuiTypography-root': {fontSize: 14}}}
-                                                             control={<Checkbox
-                                                                 sx={{'& .MuiSvgIcon-root': {fontSize: 16}}}/>}
+                                                             control={<Checkbox value={item} key={item}
+                                                                                sx={{'& .MuiSvgIcon-root': {fontSize: 16}}}
+                                                                                onChange={glassFilterHandler}/>}
                                                              label={item}/>
                                 })}
                             </FormGroup>
@@ -80,10 +112,11 @@ const Filter = () => {
                                 margin: "20px 0 10px 0"
                             }}>Ingredients</Typography>
                             <FormGroup>
-                                {ingredients.map((item: any, index: number) => {
+                                {ingredientsFilter.map((item: any, index: number) => {
                                     return <FormControlLabel key={index} sx={{'& .MuiTypography-root': {fontSize: 14}}}
-                                                             control={<Checkbox
-                                                                 sx={{'& .MuiSvgIcon-root': {fontSize: 16}}}/>}
+                                                             control={<Checkbox value={item} key={item}
+                                                                                sx={{'& .MuiSvgIcon-root': {fontSize: 16}}}
+                                                                                onChange={ingredientsFilterHandler}/>}
                                                              label={item}/>
                                 })}
                             </FormGroup>

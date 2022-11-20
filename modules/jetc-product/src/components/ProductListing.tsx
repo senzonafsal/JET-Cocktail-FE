@@ -11,11 +11,12 @@ import ProductCard from "./ProductCard";
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
 
 const ProductListing = () => {
-    const {cocktails, loading} = useSearchContext();
+    const {cocktails, loading, isFiltered, filteredCocktails} = useSearchContext();
+    const cocktailDrinks = isFiltered ? [...filteredCocktails] : [...cocktails];
     if (loading) {
         return "Loading";
     }
-    if (!cocktails || (cocktails && cocktails.length == 0)) {
+    if (!cocktailDrinks || (cocktailDrinks && cocktailDrinks.length == 0)) {
         return (
             <h2 className="section-title">no cocktails matched your searches</h2>
         );
@@ -24,7 +25,7 @@ const ProductListing = () => {
         <div className="jetc-product-product-listing">
             <ThemeProvider theme={appTheme}>
                 <Masonry columns={4} spacing={2}>
-                    {cocktails.map((item: any) => {
+                    {cocktailDrinks.map((item: any) => {
                         return <ProductCard key={item.id} {...item}/>
                     })}
                 </Masonry>

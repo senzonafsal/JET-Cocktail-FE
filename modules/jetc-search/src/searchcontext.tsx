@@ -8,6 +8,24 @@ const SearchProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [cocktails, setCocktails] = useState([]);
+    const [filterTerm, setFilterTerm] = useState({});
+    const [isFiltered, setIsFiltered] = useState(false);
+    const [filteredCocktails, setFilteredCocktails] = useState([]);
+    const [categoryFilter, setCategoryFilter] = useState([]);
+    const [glassFilter, setGlassFilter] = useState([]);
+    const [ingredientsFilter, setIngredientsFilter] = useState([]);
+
+    const createFilter = (newCocktails) => {
+        setCategoryFilter([...new Set(newCocktails.map(item => item.category.replace(/\w\S*/g, ((txt) => {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }))))]);
+        setIngredientsFilter([...new Set(newCocktails.flatMap(item => item.ingredients).map((text) => (text).replace(/\w\S*/g, ((txt) => {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }))))]);
+        setGlassFilter([...new Set(newCocktails.map(item => item.glass.replace(/\w\S*/g, ((txt) => {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }))))]);
+    };
 
     const fetchDrinks = async () => {
         setLoading(true);
@@ -52,20 +70,57 @@ const SearchProvider = ({children}) => {
                     };
                 });
                 setCocktails(newCocktails);
+                createFilter(newCocktails);
             } else {
                 setCocktails([]);
             }
+            setIsFiltered(false);
             setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
+    const filterDrinks = () => {
+        let filteredCocktails = [...cocktails];
+        if (Object.keys(filterTerm).length > 0) {
+            if (filterTerm["Category"]) {
+                filteredCocktails = filteredCocktails.filter((item) => filterTerm["Category"].map((txt) => txt.toLowerCase()).includes(item.category.toLowerCase()));
+            }
+            if (filterTerm["Glass"]) {
+                filteredCocktails = filteredCocktails.filter((item) => filterTerm["Glass"].map((txt) => txt.toLowerCase()).includes(item.glass.toLowerCase()));
+            }
+            if (filterTerm["Ingredients"]) {
+                filteredCocktails = filteredCocktails.filter((item) => filterTerm["Ingredients"].map((txt) => txt.toLowerCase()).some(r => item.ingredients.map((txt) => txt.toLowerCase()).indexOf(r) >= 0));
+            }
+        }
+        setIsFiltered(true);
+        setFilteredCocktails(filteredCocktails);
+    };
     useEffect(() => {
-        fetchDrinks().then(() => {
-        });
+        fetchDrinks().then(false);
     }, [searchTerm]);
+    useEffect(() => {
+        filterDrinks();
+    }, [filterTerm]);
     return (
-        <AppContextProvider.Provider value={{loading, searchTerm, cocktails, setSearchTerm}}>
+        <AppContextProvider.Provider
+            value={{
+                loading,
+                searchTerm,
+                cocktails,
+                setSearchTerm,
+                filterTerm,
+                setFilterTerm,
+                filteredCocktails, setFilteredCocktails,
+                isFiltered,
+                setIsFiltered,
+                categoryFilter,
+                setCategoryFilter,
+                glassFilter,
+                setGlassFilter,
+                ingredientsFilter,
+                setIngredientsFilter
+            }}>
             {children}
         </AppContextProvider.Provider>
     );
