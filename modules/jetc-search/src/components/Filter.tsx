@@ -3,7 +3,7 @@ import "./../assets/scss/App.scss";
 import {
     ThemeProvider, Paper, Box, Typography,
 } from '@mui/material';
-import {appTheme} from "../../../../shared/assets/themes/theme";
+import { appTheme } from 'jet-cocktail-shared';
 
 const Filter = () => (
     <div className="jetc-search-filter">

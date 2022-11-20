@@ -1,5 +1,5 @@
 {
-  "name": "jetc-search",
+  "name": "jet-cocktail-search",
   "version": "1.0.0",
   "private": true,
   "description": "Home Container",
@@ -33,6 +33,7 @@
     "install": "^0.13.0",
     "npm": "^9.1.2",
     "prettier": "^2.7.1",
+    "react-jsx": "^1.0.0",
     "rimraf": "^3.0.2",
     "sass": "^1.55.0",
     "sass-loader": "^13.2.0",

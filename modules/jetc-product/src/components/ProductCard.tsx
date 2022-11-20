@@ -11,11 +11,11 @@ import {
     CardActions,
     Button, Card,
 } from '@mui/material';
-import {appTheme} from "../../../../shared/assets/themes/theme";
+import {appTheme} from 'jet-cocktail-shared';
 
 const cocktailImage = require("../assets/img/cocktail_sample.jpg");
 
-const ProductCard = () => (
+const ProductCard = ({image, name, info, glass, tags, category}) => (
     <div className="jetc-product-product-card">
         <ThemeProvider theme={appTheme}>
             <Card sx={{minWidth: "274px"}}>
@@ -28,22 +28,23 @@ const ProductCard = () => (
                         background: "rgb(241,134,46)",
                         color: "white",
                         fontSize: "13px"
-                    }} label={"Alcoholic"}></Chip>
+                    }} label={category || "Category"}></Chip>
                     <CardMedia
                         component="img"
                         width="194"
-                        image={cocktailImage.default}
-                        alt="Cocktail Sample"
+                        image={image || cocktailImage.default}
+                        alt={name}
                     />
-                    <CardHeader title="Cocktail Sample" sx={{
-                        padding: "12px 16px 16px 16px"
+                    <CardHeader title={name || "Header goes here"} sx={{
+                        padding: "12px 16px 0 16px"
                     }}/>
                     <CardContent sx={{padding: "0 16px"}}>
+                        <p>{`${glass} (${info})`}</p>
                         <Stack direction="row" spacing={1} sx={{flexWrap: "wrap"}}>
-                            <Chip label="Gin" sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
-                            <Chip label="Grand"  sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
-                            <Chip label="Lemon Juice"  sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
-                            <Chip label="Grenadine"  sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
+                            {tags ? tags.map((item: string, index: number) => {
+                                return <Chip key={index} label={item}
+                                      sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
+                            }) : ''}
                         </Stack>
                     </CardContent>
                 </CardActionArea>

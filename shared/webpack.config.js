@@ -1,5 +1,7 @@
 // shared webpack config
-module.exports = {
+
+const getRemoteEntryUrl = (port) => `//localhost:${port}/remoteEntry.js`;
+const commonConfig = {
     entry: "./index.tsx",
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -14,9 +16,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: [/\.jsx?$/, /\.tsx?$/],
-                use: ["babel-loader"],
+                test: [/\.jsx?$/, /\.tsx?$/, /\.js?$/, /\.ts?$/],
                 exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: { presets: ['@babel/env','@babel/preset-react'] },
             },
             {
                 test: /\.css$/,
@@ -57,3 +60,4 @@ module.exports = {
         ]
     }
 }
+module.exports = {commonConfig, getRemoteEntryUrl};

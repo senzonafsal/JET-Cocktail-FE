@@ -2,7 +2,7 @@ module.exports = {
     backend: {
         port: 3000
     },
-    container: {
+    home: {
         port: 3001
     },
     search: {

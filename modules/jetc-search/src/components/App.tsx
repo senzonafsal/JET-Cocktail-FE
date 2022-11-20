@@ -6,7 +6,7 @@ import {
     ThemeProvider,
     Box
 } from '@mui/material';
-import {appTheme} from "../../../../shared/assets/themes/theme";
+import { appTheme } from 'jet-cocktail-shared';
 
 const App = () => (
     <div className="jetc-search">

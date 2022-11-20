@@ -1,5 +1,5 @@
 {
-  "name": "jetc-home",
+  "name": "jet-cocktail-home",
   "version": "1.0.0",
   "private": true,
   "description": "Home Container",
@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-jsx": "^1.0.0"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "name": "jet-cocktail-shared",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Home Container",
+  "author": "Afsal KH",
+  "main": "./src/index.ts"
+}
