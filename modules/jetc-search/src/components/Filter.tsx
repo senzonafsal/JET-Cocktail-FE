@@ -77,7 +77,7 @@ const Filter = () => {
                                 fontSize: "16px",
                                 fontWeight: 600,
                                 borderBottom: "2px solid #F8C7CF"
-                            }}>Advanced Filter</Typography>
+                            }}>Refine Your Search</Typography>
                             <Typography variant="h4" sx={{
                                 fontSize: "14px",
                                 fontWeight: 600,
