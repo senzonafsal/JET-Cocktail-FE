@@ -3,7 +3,6 @@ import "./../assets/scss/App.scss";
 import {Button, FormControl, InputBase, SvgIcon, ThemeProvider} from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {appTheme} from 'jet-cocktail-shared';
-
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
 
 const SearchField = () => {

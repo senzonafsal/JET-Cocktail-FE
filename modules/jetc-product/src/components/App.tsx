@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import {appTheme} from 'jet-cocktail-shared';
 import {SearchProvider} from 'jet-cocktail-search/src/searchcontext';
+import {ProductProvider} from 'jet-cocktail-product/src/productcontext';
 import {CocktailSampleImage} from "../assets/img";
 
 const App = () => {
@@ -18,12 +19,13 @@ const App = () => {
         "name": "Dummy",
         "info": "dummy",
         "glass": "Dummy Glass",
-        "tags": ["Tag1","Tag2"],
+        "tags": ["Tag1", "Tag2"],
         "category": "Category",
         "ingredients": ["Ingredient1", "Ingredient2"],
     };
     return (
         <div className="jetc-product">
+
             <SearchProvider>
                 <ThemeProvider theme={appTheme}>
                     <Box
@@ -44,7 +46,9 @@ const App = () => {
                                 }}
                             >
                                 <div>Name: ProductCard</div>
-                                <ProductCard key={item.id} {...item}/>
+                                <ProductProvider>
+                                    <ProductCard key={item.id} {...item}/>
+                                </ProductProvider>
                             </Box>
                         </Box>
                         <Box

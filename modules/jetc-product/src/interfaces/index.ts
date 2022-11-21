@@ -1,3 +1,5 @@
+import {ReactNode} from "react";
+
 export interface IProductCardData {
     "id": string;
     "name": string;
@@ -8,4 +10,8 @@ export interface IProductCardData {
     "category": string;
     ingredientWithMeasurements?: any[];
     ingredients: any[],
+}
+
+export interface Props {
+    children?: ReactNode
 }

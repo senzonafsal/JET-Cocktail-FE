@@ -9,6 +9,7 @@ import ProductCard from "./ProductCard";
 
 // @ts-ignore
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
+import {ProductProvider} from 'jet-cocktail-product/src/productcontext';
 
 const ProductListing = () => {
     const {cocktails, loading, isFiltered, filteredCocktails}: any = useSearchContext();
@@ -23,13 +24,15 @@ const ProductListing = () => {
     }
     return (
         <div className="jetc-product-product-listing">
-            <ThemeProvider theme={appTheme}>
-                <Masonry columns={4} spacing={2}>
-                    {cocktailDrinks.map((item: any) => {
-                        return <ProductCard key={item.id} {...item}/>
-                    })}
-                </Masonry>
-            </ThemeProvider>
+            <ProductProvider>
+                <ThemeProvider theme={appTheme}>
+                    <Masonry columns={4} spacing={2}>
+                        {cocktailDrinks.map((item: any) => {
+                            return <ProductCard key={item.id} {...item}/>
+                        })}
+                    </Masonry>
+                </ThemeProvider>
+            </ProductProvider>
         </div>
     )
 };
