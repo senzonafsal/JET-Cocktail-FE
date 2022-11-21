@@ -11,10 +11,10 @@ import ProductCard from "./ProductCard";
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
 
 const ProductListing = () => {
-    const {cocktails, loading, isFiltered, filteredCocktails} = useSearchContext();
+    const {cocktails, loading, isFiltered, filteredCocktails}: any = useSearchContext();
     const cocktailDrinks = isFiltered ? [...filteredCocktails] : [...cocktails];
     if (loading) {
-        return "Loading";
+        return <div>Loading</div>;
     }
     if (!cocktailDrinks || (cocktailDrinks && cocktailDrinks.length == 0)) {
         return (

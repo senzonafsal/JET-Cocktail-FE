@@ -9,5 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Afsal K H"
+  "author": "Afsal K H",
+  "devDependencies": {
+    "ts-loader": "^9.4.1"
+  }
 }

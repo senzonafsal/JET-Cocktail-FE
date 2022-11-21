@@ -8,9 +8,7 @@ import {
 } from '@mui/material';
 import {appTheme} from 'jet-cocktail-shared';
 
-const reactLogo = require("../assets/img/jet_logo.png");
-const headerBg1 = require("../assets/img/Header_BG1.png");
-const headerBg2 = require("../assets/img/Header_BG2.png");
+const {ReactLogo, HeaderBG1, HeaderBG2} = require("../assets/img");
 
 // @ts-ignore
 const SearchField = React.lazy(() => import("jetc-search/SearchField"));
@@ -28,12 +26,12 @@ const App = () => {
                     <header>
                         <Box
                             sx={{
-                                backgroundColor: 'white'
+                                backgroundColor: 'white',
                             }}
                         >
                             <Container maxWidth="xl">
                                 <Box>
-                                    <a href="/"><img src={reactLogo.default} className="logo" width="300"
+                                    <a href="/"><img src={ReactLogo.default} className="logo" width="300"
                                                      alt="logo"/></a>
                                 </Box>
                             </Container>
@@ -50,7 +48,7 @@ const App = () => {
                                 backgroundPosition: "left bottom,right bottom",
                                 backgroundRepeat: "no-repeat,no-repeat",
                                 transition: "all .3s",
-                                backgroundImage: `url(${headerBg1.default}),url(${headerBg2.default})`
+                                backgroundImage: `url(${HeaderBG1.default}),url(${HeaderBG2.default})`,
                             }}
                         >
                             <Container maxWidth="xl">
@@ -58,14 +56,14 @@ const App = () => {
                                     sx={{
                                         width: "580px",
                                         margin: "120px auto 0 auto",
-                                        textAlign: "center"
+                                        textAlign: "center",
                                     }}
                                 >
                                     <Typography variant="h1" sx={{
                                         fontSize: "42px",
                                         textAlign: "center",
                                         lineHeight: 1.3,
-                                        fontWeight: 600
+                                        fontWeight: 600,
                                     }}>Your favourite cocktails from all over the world.</Typography>
                                     <React.Suspense fallback="Loading">
                                         <SearchField style="margin: 40px auto 20px auto;"/>
@@ -78,7 +76,7 @@ const App = () => {
                         <Container maxWidth="xl" sx={{
                             margin: "40px auto",
                             display: "flex",
-                            flexWrap: "wrap"
+                            flexWrap: "wrap",
                         }}>
                             <React.Suspense fallback="Loading">
                                 <Filter/>
@@ -98,7 +96,7 @@ const App = () => {
                                     }}>Cocktails</Typography>
                                     <Typography sx={{
                                         fontSize: "13px",
-                                        color: "#999"
+                                        color: "#999",
                                     }}>your all-time favourites are here!!</Typography>
                                 </Box>
                                 <Box sx={{marginTop: "20px"}}>

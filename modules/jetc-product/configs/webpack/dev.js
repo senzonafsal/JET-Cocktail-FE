@@ -12,14 +12,14 @@ module.exports = merge(commonConfig, {
     mode: "development",
     context: resolve(__dirname, "../../src"),
     devServer: {
-        port: moduleRegistry.product.port
+        port: moduleRegistry.product.port,
     },
     plugins: [new ModuleFederationPlugin({
         name: "product",
         filename: "remoteEntry.js",
         exposes: {
             "./ProductCard": "./components/ProductCard",
-            "./ProductListing": "./components/ProductListing"
+            "./ProductListing": "./components/ProductListing",
         },
         shared: {
             ...deps,
@@ -38,7 +38,8 @@ module.exports = merge(commonConfig, {
                 singleton: true,
                 import: "jet-cocktail-shared",
                 requiredVersion: require('jet-cocktail-shared/package.json').version,
-            }
+            },
         },
-    }), new HtmlWebpackPlugin({template: "index.html"})],
+    }), new HtmlWebpackPlugin({template: "index.html"}),
+    ],
 });

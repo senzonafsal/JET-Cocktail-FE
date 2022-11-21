@@ -1,2 +1,1 @@
-# JustEatTakeaway.com Cocktail Application
-JustEatTakeaway.com Cocktail Micro-Frontend Application
+# Just Eat Takeaway.com Cocktail Micro-Frontend Application

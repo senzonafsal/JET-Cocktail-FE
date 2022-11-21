@@ -19,14 +19,14 @@ const Filter = () => {
         setFilterTerm,
         ingredientsFilter,
         categoryFilter,
-        glassFilter
-    } = useSearchContext();
+        glassFilter,
+    }: any = useSearchContext();
     let newFilter = {...filterTerm};
     if (loading) {
-        return "Loading";
+        return <div>Loading</div>;
     }
 
-    function filterHandler(value: string, isChecked: boolean, type: FilterTypes) {
+    const filterHandler = (value: string, isChecked: boolean, type: FilterTypes) => {
         if (newFilter[FilterTypes[type]]) {
             if (isChecked) {
                 newFilter[FilterTypes[type]].push(value)
@@ -42,17 +42,17 @@ const Filter = () => {
         setFilterTerm(newFilter);
     }
 
-    function categoryFilterHandler(e: any) {
+    const categoryFilterHandler = (e: any) => {
         const {checked, value} = e.target;
         filterHandler(value, checked, FilterTypes.Category);
     }
 
-    function glassFilterHandler(e: any) {
+    const glassFilterHandler = (e: any) => {
         const {checked, value} = e.target;
         filterHandler(value, checked, FilterTypes.Glass);
     }
 
-    function ingredientsFilterHandler(e: any) {
+    const ingredientsFilterHandler = (e: any) => {
         const {checked, value} = e.target;
         filterHandler(value, checked, FilterTypes.Ingredients);
     }
@@ -70,18 +70,18 @@ const Filter = () => {
                     <Paper elevation={0} sx={{
                         borderRadius: "8px",
                         padding: "20px",
-                        height: "calc(100% - 40px)"
+                        height: "calc(100% - 40px)",
                     }}>
                         <Box>
                             <Typography variant="h3" sx={{
                                 fontSize: "16px",
                                 fontWeight: 600,
-                                borderBottom: "2px solid #F8C7CF"
+                                borderBottom: "2px solid #F8C7CF",
                             }}>Refine Your Search</Typography>
                             <Typography variant="h4" sx={{
                                 fontSize: "14px",
                                 fontWeight: 600,
-                                margin: "20px 0 10px 0"
+                                margin: "20px 0 10px 0",
                             }}>Category</Typography>
                             <FormGroup>
                                 {categoryFilter.map((item: any, index: number) => {
@@ -95,7 +95,7 @@ const Filter = () => {
                             <Typography variant="h4" sx={{
                                 fontSize: "14px",
                                 fontWeight: 600,
-                                margin: "20px 0 10px 0"
+                                margin: "20px 0 10px 0",
                             }}>Glass</Typography>
                             <FormGroup>
                                 {glassFilter.map((item: any, index: number) => {
@@ -109,7 +109,7 @@ const Filter = () => {
                             <Typography variant="h4" sx={{
                                 fontSize: "14px",
                                 fontWeight: 600,
-                                margin: "20px 0 10px 0"
+                                margin: "20px 0 10px 0",
                             }}>Ingredients</Typography>
                             <FormGroup>
                                 {ingredientsFilter.map((item: any, index: number) => {

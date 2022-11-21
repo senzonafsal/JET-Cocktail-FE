@@ -1,0 +1,1 @@
+export const CocktailSampleImage = require('./cocktail_sample.jpg');

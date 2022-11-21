@@ -1,5 +1,5 @@
 // production config
-const { merge } = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const commonConfig = require("../../../../shared/webpack.config");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {resolve} = require("path");

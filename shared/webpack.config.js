@@ -10,16 +10,21 @@ const commonConfig = {
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-        }
+            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization",
+        },
     },
     module: {
         rules: [
             {
-                test: [/\.jsx?$/, /\.tsx?$/, /\.js?$/, /\.ts?$/],
+                test: [/\.jsx?$/, /\.js?$/],
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                options: { presets: ['@babel/env','@babel/preset-react'] },
+                options: {presets: ['@babel/preset-env', '@babel/preset-react']},
+            },
+            {
+                test: [/\.tsx?$/, /\.ts?$/],
+                exclude: /node_modules/,
+                use: 'ts-loader',
             },
             {
                 test: /\.css$/,
@@ -44,20 +49,20 @@ const commonConfig = {
                             },
                             pngquant: {
                                 quality: [0.65, 0.90],
-                                speed: 4
+                                speed: 4,
                             },
                             gifsicle: {
                                 interlaced: false,
                             },
                             // the webp option will enable WEBP
                             webp: {
-                                quality: 75
-                            }
-                        }
+                                quality: 75,
+                            },
+                        },
                     },
                 ],
             },
-        ]
-    }
+        ],
+    },
 }
 module.exports = {commonConfig, getRemoteEntryUrl};

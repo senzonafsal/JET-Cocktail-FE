@@ -1,28 +1,28 @@
 import * as React from "react";
 import "./../assets/scss/App.scss";
-import {Button, FormControl, InputBase, SvgIcon, ThemeProvider,} from '@mui/material';
+import {Button, FormControl, InputBase, SvgIcon, ThemeProvider} from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {appTheme} from 'jet-cocktail-shared';
 
 import {useSearchContext} from 'jet-cocktail-search/src/searchcontext';
 
 const SearchField = () => {
-    const {setSearchTerm} = useSearchContext();
+    const {setSearchTerm}: any = useSearchContext();
     const searchValue = React.useRef("");
 
-    function searchCocktail() {
-        const inputValue = searchValue.current;
+    const searchCocktail = () => {
+        const inputValue = searchValue.current as any;
         setSearchTerm(inputValue.value);
     }
 
-    function keyDownHandler(e) {
+    const keyDownHandler = (e: any) => {
         if (e.key === 'Enter') {
             searchCocktail();
         }
     }
 
     React.useEffect(() => {
-        searchValue.current.focus();
+        (searchValue.current as any).focus();
     }, []);
     return (
         <div className="jetc-search-search-field">
@@ -32,7 +32,7 @@ const SearchField = () => {
                     maxWidth: 600,
                     borderRadius: "8px",
                     overflow: "hidden",
-                    boxShadow: "0px 4px 16px rgb(43 52 69 / 10%)"
+                    boxShadow: "0px 4px 16px rgb(43 52 69 / 10%)",
                 }}>
                     <InputBase fullWidth={true} placeholder="Search your cocktail here.." size="small"
                                startAdornment={(
@@ -41,13 +41,13 @@ const SearchField = () => {
                         <Button variant="contained" size="large" sx={{
                             color: "#fff",
                             textTransform: "none",
-                            height: "50px"
+                            height: "50px",
                         }} onClick={searchCocktail}>Search</Button>
                     )} sx={{
                         background: "#fff",
                         color: "#4B566B",
                         paddingLeft: "14px",
-                        height: "50px"
+                        height: "50px",
                     }} inputRef={searchValue} onKeyDown={keyDownHandler}/>
                 </FormControl>
             </ThemeProvider>

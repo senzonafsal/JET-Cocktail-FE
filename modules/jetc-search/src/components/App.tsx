@@ -4,7 +4,7 @@ import SearchField from "./SearchField";
 import Filter from "./Filter";
 import {
     ThemeProvider,
-    Box
+    Box,
 } from '@mui/material';
 import {appTheme} from 'jet-cocktail-shared';
 import {SearchProvider} from 'jet-cocktail-search/src/searchcontext';
@@ -17,12 +17,12 @@ const App = () => (
                     sx={{
                         width: "80%",
                         padding: "20px 0",
-                        margin: "0 auto"
+                        margin: "0 auto",
                     }}
                 >
                     <Box
                         sx={{
-                            padding: "20px 0"
+                            padding: "20px 0",
                         }}
                     >
                         <div>Name: Search</div>
@@ -30,7 +30,7 @@ const App = () => (
                     </Box>
                     <Box
                         sx={{
-                            padding: "20px 0"
+                            padding: "20px 0",
                         }}
                     >
                         <div>Name: Filter</div>

@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import {createTheme} from "@mui/material/styles";
 import "@fontsource/roboto";
 
 export const appTheme = createTheme({
@@ -13,7 +13,7 @@ export const appTheme = createTheme({
             "Roboto",
             "Helvetica",
             "Arial",
-            "sans-serif"
+            "sans-serif",
         ].join(','),
     },
 });
