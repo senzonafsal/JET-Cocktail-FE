@@ -15,7 +15,7 @@ import {appTheme} from 'jet-cocktail-shared';
 
 const cocktailImage = require("../assets/img/cocktail_sample.jpg");
 
-const ProductCard = ({image, name, info, glass, tags, category}) => (
+const ProductCard = ({image, name, info, glass, tags, category, ingredients}) => (
     <div className="jetc-product-product-card">
         <ThemeProvider theme={appTheme}>
             <Card sx={{minWidth: "274px"}}>
@@ -40,10 +40,12 @@ const ProductCard = ({image, name, info, glass, tags, category}) => (
                     }}/>
                     <CardContent sx={{padding: "0 16px"}}>
                         <p>{`${glass} (${info})`}</p>
-                        <Stack direction="row" spacing={1} sx={{flexWrap: "wrap"}}>
+                        <Stack direction="row" spacing={1} sx={{flexWrap: "wrap", '& .MuiChip-root': {fontSize: 11, height: "23px", margin: "4px 2px !important", backgroundColor: "#eee", fontSize: "12px"}}}>
                             {tags ? tags.map((item: string, index: number) => {
-                                return <Chip key={index} label={item}
-                                      sx={{margin: "4px !important", backgroundColor: "#eee", fontSize: "12px"}}/>
+                                return <Chip key={index} label={item}/>
+                            }) : ''}
+                            {ingredients ? ingredients.map((item: string, index: number) => {
+                                return <Chip key={index} label={item}/>
                             }) : ''}
                         </Stack>
                     </CardContent>
