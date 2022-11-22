@@ -1,6 +1,6 @@
 // production config
 const {merge} = require("webpack-merge");
-const commonConfig = require("../../../../shared/webpack.config");
+const {commonConfig} = require("jet-cocktail-shared/src/Build/webpackConfig");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {resolve} = require("path");
 

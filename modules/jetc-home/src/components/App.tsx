@@ -65,7 +65,7 @@ const App = () => {
                                         lineHeight: 1.3,
                                         fontWeight: 600,
                                     }}>Your favourite cocktails from all over the world.</Typography>
-                                    <React.Suspense fallback="Loading">
+                                    <React.Suspense fallback="Loading Search Field">
                                         <SearchField style="margin: 40px auto 20px auto;"/>
                                     </React.Suspense>
                                 </Box>
@@ -78,7 +78,7 @@ const App = () => {
                             display: "flex",
                             flexWrap: "wrap",
                         }}>
-                            <React.Suspense fallback="Loading">
+                            <React.Suspense fallback="Loading Filter">
                                 <Filter/>
                             </React.Suspense>
                             <Box
@@ -100,7 +100,7 @@ const App = () => {
                                     }}>your all-time favourites are here!!</Typography>
                                 </Box>
                                 <Box sx={{marginTop: "20px"}}>
-                                    <React.Suspense fallback="Loading">
+                                    <React.Suspense fallback="Loading Products">
                                         <ProductListing/>
                                     </React.Suspense>
                                 </Box>

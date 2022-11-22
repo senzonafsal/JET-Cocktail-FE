@@ -1,7 +1,7 @@
 // development config
 const {merge} = require("webpack-merge");
-const {commonConfig, getRemoteEntryUrl} = require("../../../../shared/webpack.config");
-const moduleRegistry = require("../../../../shared/module_registry");
+const {commonConfig, getRemoteEntryUrl} = require("jet-cocktail-shared/src/Build/webpackConfig");
+const moduleRegistry = require("jet-cocktail-shared/src/Build/moduleRegistry");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {ModuleFederationPlugin} = require("webpack").container;
 

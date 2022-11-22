@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {AppContextProvider} from "jet-cocktail-shared";
+import {GlobalContext} from "jet-cocktail-shared";
 import {Props} from "./interfaces";
 
 const ProductProvider = ({children}: Props) => {
@@ -13,11 +13,11 @@ const ProductProvider = ({children}: Props) => {
     }, [favouriteItem]);
 
     return (
-        <AppContextProvider.Provider value={{favouriteItem, setFavouriteItem} as any}>
+        <GlobalContext.Provider value={{favouriteItem, setFavouriteItem} as any}>
             {children}
-        </AppContextProvider.Provider>
+        </GlobalContext.Provider>
     );
 };
-const useProductContext = () => useContext(AppContextProvider);
+const useProductContext = () => useContext(GlobalContext);
 
-export {AppContextProvider, ProductProvider, useProductContext};
+export {ProductProvider, useProductContext};

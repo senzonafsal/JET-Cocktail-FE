@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {AppContextProvider} from "jet-cocktail-shared";
+import {GlobalContext} from "jet-cocktail-shared";
 import {IProductData, IProductDataList, IProductCardData, IProductCardDataList, Props} from "./interfaces";
 import {TFilterTerm} from "./types";
 
@@ -121,7 +121,7 @@ const SearchProvider = ({children}: Props) => {
         filterDrinks();
     }, [filterTerm]);
     return (
-        <AppContextProvider.Provider value={{
+        <GlobalContext.Provider value={{
             loading,
             searchTerm,
             cocktails,
@@ -140,9 +140,9 @@ const SearchProvider = ({children}: Props) => {
             setIngredientsFilter,
         } as any}>
             {children}
-        </AppContextProvider.Provider>
+        </GlobalContext.Provider>
     );
 };
-const useSearchContext = () => useContext(AppContextProvider);
+const useSearchContext = () => useContext(GlobalContext);
 
-export {AppContextProvider, SearchProvider, useSearchContext};
+export {SearchProvider, useSearchContext};
