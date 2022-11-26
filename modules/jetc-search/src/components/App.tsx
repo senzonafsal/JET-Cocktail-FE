@@ -10,7 +10,7 @@ import {appTheme} from 'jet-cocktail-shared';
 import {SearchProvider} from 'jet-cocktail-search/src/searchcontext';
 
 const App = () => (
-    <div className="jetc-search">
+    <div className="jetc-search" data-testid="jetc-search">
         <SearchProvider>
             <ThemeProvider theme={appTheme}>
                 <Box

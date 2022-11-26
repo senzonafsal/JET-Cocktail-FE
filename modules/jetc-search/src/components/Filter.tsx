@@ -58,7 +58,7 @@ const Filter = () => {
     }
 
     return (
-        <div className="jetc-search-filter">
+        <div className="jetc-search-filter" data-testid="jetc-search-filter">
             <ThemeProvider theme={appTheme}>
                 <Box
                     sx={{

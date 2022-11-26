@@ -1,5 +1,4 @@
 import {createTheme} from "@mui/material/styles";
-import "@fontsource/roboto";
 
 export const appTheme = createTheme({
     palette: {
@@ -10,7 +9,6 @@ export const appTheme = createTheme({
     typography: {
         fontFamily: [
             '-apple-system',
-            "Roboto",
             "Helvetica",
             "Arial",
             "sans-serif",

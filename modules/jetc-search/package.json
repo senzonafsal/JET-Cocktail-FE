@@ -9,6 +9,7 @@
     "clean-dist": "rimraf dist/*",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
     "start": "npm run start-dev",
+    "test": "jest --env=jsdom",
     "start-dev": "webpack serve --config=configs/webpack/dev.js",
     "start-prod": "npm run build && node express.js"
   },
@@ -47,5 +48,13 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "verbose": true
   }
 }

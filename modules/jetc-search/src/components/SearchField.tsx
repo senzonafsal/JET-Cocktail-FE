@@ -24,7 +24,7 @@ const SearchField = () => {
         (searchValue.current as any).focus();
     }, []);
     return (
-        <div className="jetc-search-search-field">
+        <div className="jetc-search-search-field" data-testid="jetc-search-search-field">
             <ThemeProvider theme={appTheme}>
                 <FormControl fullWidth={true} sx={{
                     margin: "40px auto 20px auto",
