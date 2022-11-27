@@ -28,7 +28,7 @@ If you would like to download the code and try it for yourself:
    Search Module - `http://localhost:3002`
    Product Module - `http://localhost:3003`
 
-Backend Service available at [JETC Backend Application](git@github.com:senzonafsal/JET-Cocktail-BE.git). 
+Backend Service available at `git@github.com:senzonafsal/JET-Cocktail-BE.git`. 
 Please follow the instructions in the JETC Backend Application read me file to run backend server. 
 
 ### TODO
